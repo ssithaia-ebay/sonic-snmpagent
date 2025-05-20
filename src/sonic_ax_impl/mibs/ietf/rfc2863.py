@@ -247,6 +247,9 @@ class InterfaceMIBUpdater(MIBUpdater):
             # COUNTERS DB does not have support for generic linux (mgmt) interface counters
             return 0
 
+        if oid in self.vlan_oid_name_map:
+            return 0
+
         if oid in self.oid_lag_name_map:
             counter_value = 0
             for lag_member in self.lag_name_if_name_map[self.oid_lag_name_map[oid]]:
